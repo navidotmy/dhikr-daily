@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#146858" />
+  <meta name="description" content="Dhikr Daily — a calm, offline-first home for Qur'anic du'a, daily adhkar and personal remembrance." />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./assets/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="./assets/icon-192.png" />
+  <title>Dhikr Daily — أذكار وأدعية</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <noscript><p style="padding:2rem">This app requires JavaScript to provide offline reading and saved preferences.</p></noscript>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">✦</span><div><strong>Dhikr<span class="brand-muted">Daily</span></strong><small>أذكار وأدعية</small></div></div>
+      <div class="side-group-label">YOUR SPACE</div>
+      <nav class="side-nav" id="desktop-nav" aria-label="Main navigation"></nav>
+      <div class="sidebar-bottom"><div class="side-quote"><span>﴿ فَاذْكُرُونِي أَذْكُرْكُمْ ﴾</span><small>Remember Me; I will remember you.<br>Qur’an 2:152</small></div><div class="side-foot">Made for quiet moments of remembrance</div></div>
+    </aside>
+    <div class="main-wrap">
+      <header class="topbar"><div class="top-left"><button class="icon-btn mobile-menu" id="menu-btn" aria-label="Open menu">☰</button><div><div class="eyebrow" id="top-eyebrow">YOUR DAILY COMPANION</div><h1 id="page-title">Assalamu alaikum</h1></div></div><div class="top-actions"><span class="offline-chip" id="network-state">● Offline ready</span><button class="icon-btn hidden" id="install-btn" title="Install app" aria-label="Install app">⇩</button><button class="icon-btn" id="quick-settings" title="Appearance settings" aria-label="Appearance settings">⚙</button></div></header>
+      <main id="main-content" tabindex="-1"></main>
+    </div>
+  </div>
+  <nav class="bottom-nav" id="mobile-nav" aria-label="Mobile navigation"></nav>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <input type="file" id="import-file" accept="application/json,.json" hidden />
+  <script src="./data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
