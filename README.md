@@ -1,6 +1,6 @@
 # Dhikr Daily — Progressive Web App
 
-**Status: functional starter application / content review required before public publication.**
+**Status: functional v2 mobile PWA with bundled Arabic Hisnul Muslim chapters; formal religious and copyright review still required before claiming authoritative editions.**
 
 A privacy-conscious, responsive and offline-first daily adhkar reader. No build tools, subscriptions or API keys are required. All application code and starter data are included.
 
@@ -18,12 +18,20 @@ A privacy-conscious, responsive and offline-first daily adhkar reader. No build 
 4. Visit `https://YOUR_USERNAME.github.io/dhikr-daily/`. The PWA manifest uses relative paths, so a project repository path works.
 5. Later releases should bump `CACHE` in `service-worker.js` to force offline-file updates.
 
+## Release 2.0 features
+
+- Bundled **133 Arabic Hisnul Muslim chapters (302 Arabic entries)** in `hisn-full.json` with offline cache after initial installation, chapter index and Arabic-title search. This expanded corpus is Arabic-only and independently reviewed translations remain a future task.
+- Daily dhikr journey, guided and continuous reading, memorisation, automatic count-based advancement, copy, share, printer layout and optional screen-awake mode.
+- Accessibility controls: high contrast, reduced motion, Arabic font style, independent Arabic/translation sizes with live preview.
+- Update check, local privacy-first settings/backup export/import and full personal history migration.
+- Documentation: `docs/RELEASE_NOTES.md`, `docs/THIRD_PARTY_NOTICES.md` and `docs/CONTENT_AUDIT.md`.
+
 ## Implemented features
 
 - Bilingual Malay/English navigation and working starter Malay/English meaning text.
 - Morning, evening, after-salah, bedtime, Qur'anic and selected Sunnah collections.
 - **Al-Ma’thurat Sughra/Kubra preview reading paths**, *explicitly not the authorised or complete edition*.
-- **Hisnul Muslim starter selection**, *not the full 132/133 chapters*.
+- **Hisnul Muslim** has a starter translated selection and a separately labelled **full Arabic 133-chapter corpus** with 302 items. The latter is not a scholar-reviewed/translated official edition.
 - Guided reading, continuous scrolling, memorisation hide/reveal, browser-generated Arabic speech where available (not verified audio recitation), target counters, bookmarking, progress and local completion calendar.
 - Search Arabic/Malay/English/transliteration, offline phrase-to-intent keyword matching (e.g. “I am worried about an exam”), quick situation chips, personal collections and saved items. This is deterministic retrieval, not generative AI.
 - Family and beginner-friendly short reading pathway with simple daily supplications.
@@ -37,7 +45,7 @@ A privacy-conscious, responsive and offline-first daily adhkar reader. No build 
 
 The bundled starter corpus currently includes **28** individual entries, each with an Arabic text, working English and Malay meaning, and a primary reference. The content has **not** undergone a complete scholarly audit; repetition counts and Arabic vowel marks must be checked against authoritative editions. Full Al-Ma’thurat arrangements, full Hisnul Muslim chapters, professional verified recitation audio and reviewed translations require additional permissions, suitable sources and editorial review. The demonstration paths are not replacements for published books.
 
-The optional Arabic Hisnul Muslim content pack can be downloaded (from `asellam/HisnElMuslim`, MIT license) at the user’s request and is then stored locally for offline reading. Its Arabic-only content and original repeat counts require an independent edition audit. External GitHub requests happen only on an explicit content-pack download/update.
+The full Arabic Hisnul Muslim chapter JSON is now bundled in the repository from `asellam/HisnElMuslim` (MIT licensed repository) and fetched from the **same GitHub Pages origin**, then pre-cached offline by the service worker on installation. Its Arabic-only content and original repeat counts require an independent edition audit. No external GitHub request is required to use the expanded corpus. See `docs/THIRD_PARTY_NOTICES.md`.
 
 No automated AI-generated supplication or automated hadith grading is included; search only returns bundled records. The content is in `data.js`, with a single canonical record for each entry and collection paths containing those record IDs. This structure permits professionally reviewed book editions to be added later without changes to UI logic.
 
@@ -65,6 +73,10 @@ No automated AI-generated supplication or automated hadith grading is included; 
 3. Richer educational notes and referenced authentic grading records; transparent disagreement handling.
 4. Optional genuine push reminders and encrypted opt-in sync for multiple devices.
 5. Child/family learning mode, educator dashboard and optional AI retrieval **strictly limited to reviewed records**, never generated religious text.
+
+## Automated checks
+
+Run `node --check app.js && node --check data.js && node --check service-worker.js && node tests/sanity.mjs`. GitHub Actions runs these checks on every push and PR.
 
 ## Verify before deploying
 

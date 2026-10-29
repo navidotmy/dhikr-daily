@@ -1,6 +1,6 @@
 # Religious content & publication checklist
 
-**Status: pre-publication review is outstanding. This is a functional software prototype, not an endorsed reference edition.**
+**Status: pre-publication review remains outstanding. v2 contains an offline Arabic Hisnul Muslim corpus and starter translations; it is not an endorsed authoritative edition.**
 
 ## 1. What is currently bundled
 
@@ -8,7 +8,7 @@
 - 9 reading paths, including curated morning/evening practice, after-salah, sleep, Qur'anic du'a, Sunnah du'a, and **Al-Ma'thurat Sughra/Kubra previews**.
 - The Al-Ma'thurat previews **are not** the authentic complete edition sequences and should remain labelled *Preview* until rights, sequencing, repetitions and variations are verified.
 - The **Hisnul Muslim Starter Selection** is not the complete 132/133-chapter book.
-- The optional Arabic Hisnul Muslim pack is fetched on user request from `asellam/HisnElMuslim/hisn.json` (MIT-licensed repository). Its complete Arabic chapter structure is displayed in the app and saved locally; the corpus has not been verified against a scholarly edition, and the English/Malay meanings are absent. This is an **optional downloaded reference corpus**, not a claim of official edition status.
+- The bundled Arabic Hisnul Muslim pack is fetched from the same deployed site after install (no optional third-party request needed); its source is `asellam/HisnElMuslim/hisn.json` (MIT-licensed repository). Its complete Arabic chapter structure is displayed in the app and saved locally; the corpus has not been verified against a scholarly edition, and the English/Malay meanings are absent. This is a **bundled offline reference corpus**, not a claim of official edition status.
 
 ## 2. Required source-by-source editorial process
 
@@ -41,7 +41,7 @@
 - Device speech marked machine-generated. No claim of certified recitation.
 - Notification reminders explicitly marked **app-open-only**, not guaranteed push delivery.
 - Install and update flow tested on intended GitHub Pages project path.
-- No accounts, trackers or collection of private data. Optional GitHub content-pack request occurs only after user action.
+- No accounts, trackers or collection of private data. No third-party runtime GitHub content-pack request is required; the bundled corpus is cached by the service worker.
 
 ## 5. Content expansion plan
 
