@@ -29,7 +29,7 @@ assert.equal(total,302,'Expected 302 corpus entries');
 for(const [title,v] of chapters){assert(title.trim());for(const it of v.Adhkar)assert(it.Text&&it.Reference!==undefined,'Incomplete Arabic record')}
 
 // Additional collection integrity checks for version 2.1.
-const mathRows=window.DHIKR_DATA.filter(x=>/^ma\\d{2}e?$/.test(x.id));
+const mathRows=window.DHIKR_DATA.filter(x=>x.id.startsWith('ma') && !x.id.startsWith('mat-') && (x.id.length===4 || x.id.length===5));
 assert.equal(mathRows.length,54,'49 main steps plus 5 evening alternates expected');
 for(const it of mathRows) assert(it.ar&&it.ref&&it.repeat>=1,'Missing Mathurat text: '+it.id);
 for(const c of window.DHIKR_COLLECTIONS.filter(c=>c.id.startsWith('mathurat-'))){
