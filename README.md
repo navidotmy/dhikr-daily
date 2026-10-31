@@ -1,6 +1,6 @@
 # Dhikr Daily — Progressive Web App
 
-**Status: functional v2 mobile PWA with bundled Arabic Hisnul Muslim chapters; formal religious and copyright review still required before claiming authoritative editions.**
+**Status: functional v2.1 mobile PWA with bundled Arabic Hisnul Muslim chapters; formal religious and copyright review still required before claiming authoritative editions.**
 
 A privacy-conscious, responsive and offline-first daily adhkar reader. No build tools, subscriptions or API keys are required. All application code and starter data are included.
 
@@ -81,3 +81,7 @@ Run `node --check app.js && node --check data.js && node --check service-worker.
 ## Verify before deploying
 
 Run `node --check app.js && node --check data.js && node --check service-worker.js`. Then open `preview.html`; visit Settings and test theme, palette, sliders, exports, import, and a full read/counter cycle. For real offline testing, run a local HTTPS server or use GitHub Pages and turn off networking after the first visit.
+
+## v2.1 — Four Al-Ma’thurat paths (31 October 2026)
+
+Sughra Pagi/Petang (32 items per session) and Kubra Pagi/Petang (43 items per session), with distinct morning/evening wording at five positions. They are **secondary-source working sequences**, not verified exact replicas of the linked dynoboyz app. The Google Play listing only gives sample screenshots, not all pages. Counts and ordering came from comparison of published reading guides and [workrahmattb/almatsurat-app](https://github.com/workrahmattb/almatsurat-app); these 32/43 counts must not be conflated with other 29/42 editions. The Qur'anic Arabic passages were independently sourced from [ibnmalik/quran_json](https://github.com/ibnmalik/quran_json). Third-party translations were not copied. Except three previously included surah meanings, translations for new entries are pending review. See docs/CONTENT_AUDIT.md.

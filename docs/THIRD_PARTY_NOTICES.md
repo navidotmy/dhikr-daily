@@ -13,3 +13,7 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The starter Qur'anic extracts in `data.js` are transcribed separately and are not a complete text source from Tanzil. For use of Tanzil text in the future, see https://tanzil.net/docs/Text_License — verbatim use with required attribution, no modifications.
+
+## Al-Ma’thurat v2.1 order references and Arabic excerpts
+
+The new `mathurat.js` is an assembled reader based on the secondary ordering published in [workrahmattb/almatsurat-app](https://github.com/workrahmattb/almatsurat-app) and public guides; no dynoboyz application files or translations were redistributed. Qur'anic Arabic extracts were reconstructed from the numbered passages in [ibnmalik/quran_json](https://github.com/ibnmalik/quran_json) (MIT-labelled repository); Quranic accuracy needs final human review. The complete compiler/publisher rights status of Al-Ma’thurat, hadith references, repetition counts, and translations is not certified.

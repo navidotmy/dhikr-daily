@@ -50,3 +50,12 @@
 3. Add cross-reference mapping of duplicates between collections; preserve provenance for each appearance.
 4. Provide downloaded optional audio packs, only with licensing and professional review.
 5. Add content update ledger, reviewer workflow and user-facing correction notices.
+
+## v2.1 Al-Ma’thurat sequence provenance (31 October 2026)
+
+- Four functional Arabic reading paths: Sughra Morning/Evening = 32 entries each; Kubra Morning/Evening = 43 each. These counts describe a secondary arrangement, **not** a verified dynoboyz edition.
+- Source order was triangulated with `workrahmattb/almatsurat-app/assets/data/wazifah/{sugro,kubro}.json` and publicly available reading guides. The full Android app could not be compared page-by-page; do **not** advertise exact-matching fidelity.
+- Quran excerpts reconstructed from `ibnmalik/quran_json` numbered verses instead of repeating transcription errors in the secondary source; independent scholarly verification remains necessary.
+- Wording distinctions for Pagi/Petang are resolved explicitly at positions 21, 22, 23, 24 and 42; compare against publisher edition before approving.
+- Individual hadith authentication and repetition count verification remain pending. Some closing prayers are compilation prayers, not necessarily verbatim authenticated hadith.
+- No third-party translation prose imported. Most new entries show a translation-under-review notice.
