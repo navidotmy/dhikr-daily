@@ -59,3 +59,11 @@
 - Wording distinctions for Pagi/Petang are resolved explicitly at positions 21, 22, 23, 24 and 42; compare against publisher edition before approving.
 - Individual hadith authentication and repetition count verification remain pending. Some closing prayers are compilation prayers, not necessarily verbatim authenticated hadith.
 - No third-party translation prose imported. Most new entries show a translation-under-review notice.
+
+## Al-Ma’thurat arranged paths (2.1)
+
+- 49 enumerated positions in the *reference reading guide*, 30 marked in its Sughra selection. Independent editions divide/group items differently.
+- Morning/evening substitutions at positions 26, 27, 28, 29 and 49. No claim that every du‘a is from a sound hadith; separate authentication required.
+- Qur’an is referenced by verse number and taken from MIT Quran dataset: https://github.com/semarketir/quranjson. Quran word sequence is not programmatically modified (a separator is added between complete verses).
+- The referenced Google Play application provides booklet screenshots but not its full text sequence, so exact fidelity to the app must be manually compared against its pages.
+- Arabic handwritten compilation passages, traditional salawat, closing supplications and recurrence figures need scholarly proofreading; translations/transliterations remain unpublished until reviewed. All paths use draft status.

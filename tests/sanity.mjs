@@ -3,6 +3,18 @@ import vm from 'node:vm';
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const window={};vm.runInNewContext(read('data.js'),{window});
+vm.runInNewContext(read('mathurat.js'),{window});
+const paths=new Map(window.DHIKR_COLLECTIONS.map(c=>[c.id,c]));
+assert.equal(paths.get('mathurat-s').items.length,30);
+assert.equal(paths.get('mathurat-s-evening').items.length,30);
+assert.equal(paths.get('mathurat-k').items.length,49);
+assert.equal(paths.get('mathurat-k-evening').items.length,49);
+assert.notEqual(paths.get('mathurat-s').items[13],paths.get('mathurat-s-evening').items[13],'Expected morning/evening Arabic variants');
+assert(paths.get('mathurat-k').items.includes('ma48'));
+assert(!paths.get('mathurat-s').items.includes('ma48'));
+const m25=window.DHIKR_DATA.find(x=>x.id==='ma25');assert(m25.ar.startsWith('قُلْ أَعُوذُ'));
+assert(window.DHIKR_DATA.find(x=>x.id==='ma49e').ar.startsWith('اللَّهُمَّ إِنَّ هَذَا'));
+
 const data=window.DHIKR_DATA,cols=window.DHIKR_COLLECTIONS;
 assert(Array.isArray(data)&&data.length>=28,'Expected curated supplications');
 assert(Array.isArray(cols)&&cols.length>=10,'Expected curated reading paths');
@@ -37,7 +49,7 @@ for(const it of window.DHIKR_DATA.filter(x=>x.id.startsWith('mat-'))) {
 assert(read('index.html').includes('./mathurat.js'),'Missing Mathurat script');
 assert(read('service-worker.js').includes("'./mathurat.js'"),'Mathurat must be cached offline');
 const manifest=JSON.parse(read('manifest.webmanifest'));assert(manifest.icons.length>=2);
-const sw=read('service-worker.js');assert(sw.includes("'./hisn-full.json'"),'Hisn corpus must be offline cached');
+const sw=read('service-worker.js');assert(sw.includes("'./mathurat.js'"),'Mathurat data must be offline cached');assert(sw.includes("'./hisn-full.json'"),'Hisn corpus must be offline cached');
 for(const asset of ['./index.html','./app.js','./data.js','./mathurat.js','./styles.css','./hisn-full.json','./service-worker.js','./manifest.webmanifest','./assets/icon-192.png','./assets/icon-512.png']){
  const path=new URL('../'+asset.slice(2),import.meta.url);assert(fs.existsSync(path),`Missing ${asset}`)
 }

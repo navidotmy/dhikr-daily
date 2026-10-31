@@ -17,3 +17,7 @@ The starter Qur'anic extracts in `data.js` are transcribed separately and are no
 ## Al-Ma’thurat v2.1 order references and Arabic excerpts
 
 The new `mathurat.js` is an assembled reader based on the secondary ordering published in [workrahmattb/almatsurat-app](https://github.com/workrahmattb/almatsurat-app) and public guides; no dynoboyz application files or translations were redistributed. Qur'anic Arabic extracts were reconstructed from the numbered passages in [ibnmalik/quran_json](https://github.com/ibnmalik/quran_json) (MIT-labelled repository); Quranic accuracy needs final human review. The complete compiler/publisher rights status of Al-Ma’thurat, hadith references, repetition counts, and translations is not certified.
+
+## Qur'an Arabic dataset — Semar Ketir
+
+Source: https://github.com/semarketir/quranjson (MIT License; Copyright (c) 2015 Semar Ketir). Used to assemble Al-Ma’thurat passage references. The source software and data are provided without warranty. Full MIT licence text: https://github.com/semarketir/quranjson/blob/master/LICENSE
