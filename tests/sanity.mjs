@@ -5,10 +5,13 @@ const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const window={};vm.runInNewContext(read('data.js'),{window});
 vm.runInNewContext(read('mathurat.js'),{window});
 const paths=new Map(window.DHIKR_COLLECTIONS.map(c=>[c.id,c]));
-const expected=[['mathurat-s','sughra','pagi',18],['mathurat-s-evening','sughra','petang',18],['mathurat-k','kubra','pagi',27],['mathurat-k-evening','kubra','petang',27]];
-for(const [id,edition,period,pages] of expected){const c=paths.get(id);assert(c,'Missing '+id);assert.equal(c.booklet.edition,edition);assert.equal(c.booklet.period,period);assert.equal(c.booklet.pages,pages);}
-for(const [id,n] of [['mathurat-text-s',30],['mathurat-text-s-evening',30],['mathurat-text-k',49],['mathurat-text-k-evening',49]]){const c=paths.get(id);assert(c?.draft,'Text preview missing '+id);assert.equal(c.items.length,n)}
-assert.notEqual(paths.get('mathurat-text-s').items[13],paths.get('mathurat-text-s-evening').items[13], 'Expected existing morning/evening text alternatives');
+const expected=[['mathurat-s',30],['mathurat-s-evening',30],['mathurat-k',49],['mathurat-k-evening',49]];
+for(const [id,total] of expected){
+  const c=paths.get(id);assert(c,'Missing '+id);
+  assert.equal(c.items.length,total,'Wrong text reader count '+id);
+  assert(!c.booklet,'Primary Mathurat must be text reader '+id);
+}
+assert.notEqual(paths.get('mathurat-s').items[13],paths.get('mathurat-s-evening').items[13], 'Expected morning/evening variants');
 const m25=window.DHIKR_DATA.find(x=>x.id==='ma25');assert(m25.ar.startsWith('قُلْ أَعُوذُ'));
 
 const data=window.DHIKR_DATA,cols=window.DHIKR_COLLECTIONS;
@@ -28,7 +31,7 @@ for(const [title,v] of chapters){assert(title.trim());for(const it of v.Adhkar)a
 const mathRows=window.DHIKR_DATA.filter(x=>x.id.startsWith('ma') && !x.id.startsWith('mat-') && (x.id.length===4 || x.id.length===5));
 assert.equal(mathRows.length,54,'49 main steps plus 5 evening alternates expected');
 for(const it of mathRows) assert(it.ar&&it.ref&&it.repeat>=1,'Missing Mathurat text: '+it.id);
-for(const c of window.DHIKR_COLLECTIONS.filter(c=>c.id.startsWith('mathurat-text-'))){
+for(const c of window.DHIKR_COLLECTIONS.filter(c=>/^mathurat-(s|k)(-evening)?$/.test(c.id))){
  assert.equal(new Set(c.items).size,c.items.length,'Repeated item ID in '+c.id);
  assert(c.draft,'Collection must be labelled pending edition verification: '+c.id);
 }
