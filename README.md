@@ -2,7 +2,7 @@
 
 ## Release 2.2 — Al-Ma’thurat APK-sequence booklet reader (2026-11-01)
 
-Four first-class **Pagi/Petang × Sughra/Kubra** collection entries now open an offline-capable booklet reader. Exact page lists were recovered from the user-supplied Android APK and documented in [`docs/MATHURAT_APK_SEQUENCE.md`](docs/MATHURAT_APK_SEQUENCE.md). Kubra = 27 pages; Sughra = 18 non-consecutive pages. The APK has **only two underlying image sequences**, with some morning/evening alternatives on the page — users select the wording suited to the time. The scan view has zoom, page/continuous reading, swipe and keyboard navigation, local progress, print and wake-lock controls. **Review redistribution rights before broad public release.**
+Four first-class **Pagi/Petang × Sughra/Kubra** collection entries now open an offline-capable booklet reader. The existing editable Al-Ma’thurat selections are retained as **separately labelled, non-APK-verified text previews**, so the prior reading/search features remain available. Exact page lists were recovered from the user-supplied Android APK and documented in [`docs/MATHURAT_APK_SEQUENCE.md`](docs/MATHURAT_APK_SEQUENCE.md). Kubra = 27 pages; Sughra = 18 non-consecutive pages. The APK has **only two underlying image sequences**, with some morning/evening alternatives on the page — users select the wording suited to the time. The scan view has zoom, page/continuous reading, swipe and keyboard navigation, local progress, print and wake-lock controls. **Review redistribution rights before broad public release.**
 
 
 **Status: functional v2.1 mobile PWA with bundled Arabic Hisnul Muslim chapters; formal religious and copyright review still required before claiming authoritative editions.**
