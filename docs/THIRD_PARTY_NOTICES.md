@@ -21,3 +21,8 @@ The new `mathurat.js` is an assembled reader based on the secondary ordering pub
 ## Qur'an Arabic dataset — Semar Ketir
 
 Source: https://github.com/semarketir/quranjson (MIT License; Copyright (c) 2015 Semar Ketir). Used to assemble Al-Ma’thurat passage references. The source software and data are provided without warranty. Full MIT licence text: https://github.com/semarketir/quranjson/blob/master/LICENSE
+
+
+## User-provided Al-Ma’thurat reference booklet scans
+
+Version 2.2 includes scanned page images extracted from the user-supplied APK to preserve its original sequence. Their copyright/licensing status has not been independently verified; the app's MIT source-code licence does not necessarily cover third-party images. Permission for redistribution should be confirmed before broader public distribution. No Android executable code, advertisements, analytics or software libraries have been copied.

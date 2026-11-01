@@ -67,3 +67,8 @@
 - Qur’an is referenced by verse number and taken from MIT Quran dataset: https://github.com/semarketir/quranjson. Quran word sequence is not programmatically modified (a separator is added between complete verses).
 - The referenced Google Play application provides booklet screenshots but not its full text sequence, so exact fidelity to the app must be manually compared against its pages.
 - Arabic handwritten compilation passages, traditional salawat, closing supplications and recurrence figures need scholarly proofreading; translations/transliterations remain unpublished until reviewed. All paths use draft status.
+
+
+## Version 2.2 Al-Ma’thurat sequence provenance
+
+The prior preview arrangements have been replaced by booklet-view collections whose page arrays match the uploaded Android APK's Sughra and Kubra image lists. See `docs/MATHURAT_APK_SEQUENCE.md` for exact page sequences and morning/evening limitations. These scans reproduce the source booklet without independently verifying every religious attribution or repetition count. Arabic/Malay font-size controls do not change raster scans; the booklet reader has zoom.

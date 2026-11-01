@@ -38,8 +38,20 @@ for(const c of window.DHIKR_COLLECTIONS.filter(c=>c.id.startsWith('mathurat-')))
 }
 assert(read('index.html').includes('./mathurat.js'),'Missing mathurat script');
 
+const booklets=cols.filter(c=>c.booklet);
+assert.equal(booklets.length,4,'Four Al-Mathurat morning/evening Sughra/Kubra entry points expected');
+const combinations=new Set(booklets.map(c=>c.booklet.edition+'/'+c.booklet.period));
+assert.equal(combinations.size,4,'Booklet options must be distinct');
+for(const c of booklets){assert.equal(c.booklet.pages,c.booklet.edition==='kubra'?27:18);assert.equal(c.items.length,0,'Booklet reader must not masquerade as curated text records')}
+const bookletCode=read('mathurat.js');
+assert(bookletCode.includes('page1_kubra')&&bookletCode.includes('page1_sughra'));
+assert(bookletCode.includes('15,16,17,18,19,20,21,23,28,25,26,27'), 'Sughra path must use APK-specific non-consecutive sequence');
+for(const name of ['page1_kubra','page1_sughra',...Array.from({length:27},(_,i)=>'page'+(i+2))]){
+assert(fs.existsSync(new URL('../mathurat/pages/'+name+'.webp',import.meta.url)), 'Missing booklet page '+name);
+}
+assert(fs.readFileSync(new URL('../mathurat/pages/page24.webp',import.meta.url)).equals(fs.readFileSync(new URL('../mathurat/pages/page28.webp',import.meta.url))), 'APK duplicate pages 24/28 should agree');
 const manifest=JSON.parse(read('manifest.webmanifest'));assert(manifest.icons.length>=2);
-const sw=read('service-worker.js');assert(sw.includes("'./mathurat.js'"),'Mathurat data must be offline cached');assert(sw.includes("'./hisn-full.json'"),'Hisn corpus must be offline cached');
+const sw=read('service-worker.js');assert(sw.includes("'./mathurat.js'"),'Mathurat data must be offline cached');assert(sw.includes("'./hisn-full.json'"),'Hisn corpus must be offline cached');assert(sw.includes('BOOKLET_ASSETS'),'Booklet pages must be offline cached');
 for(const asset of ['./index.html','./app.js','./data.js','./mathurat.js','./styles.css','./hisn-full.json','./service-worker.js','./manifest.webmanifest','./assets/icon-192.png','./assets/icon-512.png']){
  const path=new URL('../'+asset.slice(2),import.meta.url);assert(fs.existsSync(path),`Missing ${asset}`)
 }
