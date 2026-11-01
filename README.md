@@ -98,3 +98,7 @@ The following four reading paths are implemented: **Sughra Pagi, Sughra Petang, 
 The Quranic Arabic is drawn from [semarketir/quranjson](https://github.com/semarketir/quranjson), source/surah, MIT-licensed. Other Arabic du‘a passages are compiled and must receive human proofreading and narration review prior to any 'verified edition' claim. Full Malay/English translation for the expanded reading paths is **pending**; informational placeholders are used instead of invented translations. Do not use the app as the sole authority for hadith grading or edition fidelity. The original 28-entry starter library remains unchanged.
 
 Files: `mathurat.js` contains the additional passages and four collection arrays; `service-worker.js` precaches the data for offline reading, and the local preview has been refreshed.
+
+
+## Al-Ma’thurat v2.3.0
+The main Sughra/Pagi, Sughra/Petang, Kubra/Pagi and Kubra/Petang cards open the editable Arabic text reader, following the [Aku Islam order](https://akuislam.com/panduan/al-mathurat-sughra-kubra-rumi/). Sughra has 30 marked readings; Kubra has 49. The former PDF-style booklets are available as optional alternatives. See docs/MATHURAT_SEQUENCE.md for source and editorial notes. Translations and hadith attribution remain under review.

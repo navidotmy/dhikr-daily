@@ -17,6 +17,9 @@ jobs:
         run: |
           node --check app.js
           node --check data.js
+          node --check mathurat.js
           node --check service-worker.js
       - name: Validate corpus, collections and offline assets
-        run: node tests/sanity.mjs
+        run: |
+          node tests/sanity.mjs
+          node tests/mathurat-sequence.mjs

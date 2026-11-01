@@ -1,4 +1,4 @@
-/* Dhikr Daily Al-Ma’thurat accessible text previews v2.1 (separate from APK booklet view).
+/* Dhikr Daily Al-Ma’thurat reading sequences v2.3 (Aku Islam primary reader).
   SEQUENCE source: https://akuislam.com/panduan/al-mathurat-sughra-kubra-rumi/ (accessed 2026-10-31)
   Quran Arabic source: https://github.com/semarketir/quranjson (MIT; source/surah).
   The referenced dynoboyz Play listing shows PDF views but does not expose page-by-page text; parity remains unverified.
@@ -11,8 +11,38 @@ const readings=[{"id":"ma01","name":"Isti‘azah","ms":"Isti‘azah","ar":"أَ�
 const editions=[{"id":"mathurat-s","name":"Al-Ma’thurat Sughra · Morning","ms":"Al-Ma’thurat Sughra · Pagi","subtitle":"Short sequence · Malay reading guide","msSub":"Susunan ringkas · berpandukan panduan bacaan Melayu","icon":"sun","draft":true,"items":["ma01","ma02","ma03","ma04","ma05","ma06","ma07","ma08","ma09","ma23","ma24","ma25","ma26","ma27","ma28","ma29","ma30","ma31","ma32","ma33","ma34","ma35","ma36","ma37","ma38","ma39","ma40","ma44","ma45","ma47"]},{"id":"mathurat-s-evening","name":"Al-Ma’thurat Sughra · Evening","ms":"Al-Ma’thurat Sughra · Petang","subtitle":"Short sequence · evening wording","msSub":"Susunan ringkas · lafaz waktu petang","icon":"moon","draft":true,"items":["ma01","ma02","ma03","ma04","ma05","ma06","ma07","ma08","ma09","ma23","ma24","ma25","ma26e","ma27e","ma28e","ma29e","ma30","ma31","ma32","ma33","ma34","ma35","ma36","ma37","ma38","ma39","ma40","ma44","ma45","ma47"]},{"id":"mathurat-k","name":"Al-Ma’thurat Kubra · Morning","ms":"Al-Ma’thurat Kubra · Pagi","subtitle":"Extended sequence · Malay reading guide","msSub":"Susunan penuh · berpandukan panduan bacaan Melayu","icon":"sun","draft":true,"items":["ma01","ma02","ma03","ma04","ma05","ma06","ma07","ma08","ma09","ma10","ma11","ma12","ma13","ma14","ma15","ma16","ma17","ma18","ma19","ma20","ma21","ma22","ma23","ma24","ma25","ma26","ma27","ma28","ma29","ma30","ma31","ma32","ma33","ma34","ma35","ma36","ma37","ma38","ma39","ma40","ma41","ma42","ma43","ma44","ma45","ma46","ma47","ma48","ma49"]},{"id":"mathurat-k-evening","name":"Al-Ma’thurat Kubra · Evening","ms":"Al-Ma’thurat Kubra · Petang","subtitle":"Extended sequence · evening wording","msSub":"Susunan penuh · lafaz waktu petang","icon":"moon","draft":true,"items":["ma01","ma02","ma03","ma04","ma05","ma06","ma07","ma08","ma09","ma10","ma11","ma12","ma13","ma14","ma15","ma16","ma17","ma18","ma19","ma20","ma21","ma22","ma23","ma24","ma25","ma26e","ma27e","ma28e","ma29e","ma30","ma31","ma32","ma33","ma34","ma35","ma36","ma37","ma38","ma39","ma40","ma41","ma42","ma43","ma44","ma45","ma46","ma47","ma48","ma49e"]}];
 const known=new Set(window.DHIKR_DATA.map(x=>x.id));
 for(const e of readings){if(known.has(e.id))throw Error('Duplicate Ma’thurat ID: '+e.id);window.DHIKR_DATA.push(e);}
-// Keep the older editable/text sequences as clearly labelled previews, not as the APK-booklet collections.
-const legacy=editions.map(x=>({...x,id:x.id.replace('mathurat-','mathurat-text-'),name:x.name+' · Text preview (unverified)',ms:x.ms+' · Pratonton teks (belum disahkan)',subtitle:'Editable secondary-guide draft, not APK exact page sequence',msSub:'Susunan teks rujukan sekunder, bukan urutan halaman APK',draft:true}));
-window.DHIKR_COLLECTIONS.push(...legacy);
-window.DHIKR_MATHURAT_META={version:'2.1',source:'https://akuislam.com/panduan/al-mathurat-sughra-kubra-rumi/',verifiedAgainstPlayApp:false,readingCount:readings.length,shortCount:30,longCount:49};
+// Promote the Aku Islam guide's numbered sequences to the four main reading paths.
+// Sughra follows 🔰 markers: 1–9, 23–40, 44, 45, 47. Kubra follows 1–49.
+// Period-specific alternatives occupy positions 26–29; evening also has ma49e.
+const oldBooklets=[];
+for(const seq of editions){
+  const primary=window.DHIKR_COLLECTIONS.find(x=>x.id===seq.id);
+  if(!primary)throw Error('Missing Al-Ma’thurat collection: '+seq.id);
+  if(primary.booklet)oldBooklets.push({
+    ...primary,id:'mathurat-booklet-'+seq.id,
+    name:seq.name+' · Alternative booklet',
+    ms:seq.ms+' · Risalah alternatif',
+    subtitle:'Previous PDF-style booklet layout',
+    msSub:'Susun atur risalah gaya PDF sebelumnya',
+    draft:true
+  });
+  Object.assign(primary,seq,{
+    subtitle:(seq.items.length===30?'30':'49')+' ordered readings · Aku Islam sequence',
+    msSub:(seq.items.length===30?'30':'49')+' bacaan · susunan panduan Aku Islam',
+    draft:true
+  });
+  delete primary.booklet;
+  if(primary.items.some(id=>!window.DHIKR_DATA.some(x=>x.id===id)))throw Error('Missing Arabic text in '+seq.id);
+}
+window.DHIKR_COLLECTIONS.push(...oldBooklets);
+window.DHIKR_MATHURAT_META={
+  version:'2.3.0',
+  source:'https://akuislam.com/panduan/al-mathurat-sughra-kubra-rumi/',
+  verifiedSequenceAgainstAkuIslam:true,
+  verifiedArabicEdition:false,
+  verifiedTranslations:false,
+  shortCount:30,longCount:49,
+  shortIndices:[1,2,3,4,5,6,7,8,9,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,44,45,47],
+  notice:'Reading order follows Aku Islam; source narrations, translations and full Arabic edition remain subject to independent review.'
+};
 })();

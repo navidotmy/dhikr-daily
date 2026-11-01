@@ -1,5 +1,5 @@
 // Network-independent static asset cache. Bump the key on each app/content release.
-const CACHE='dhikr-daily-v2.2.0';
+const CACHE='dhikr-daily-v2.3.0';
 const BOOKLET_ASSETS=['./mathurat.html','./mathurat.css','./mathurat-booklet.js','./mathurat/pages/page1_kubra.webp','./mathurat/pages/page1_sughra.webp',...Array.from({length:27},(_,i)=>`./mathurat/pages/page${i+2}.webp`)];
 const ASSETS=['./','./index.html','./styles.css','./data.js','./mathurat.js','./hisn-full.json','./app.js','./manifest.webmanifest','./assets/icon-192.png','./assets/icon-512.png',...BOOKLET_ASSETS];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting()))});
